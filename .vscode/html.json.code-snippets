@@ -1,0 +1,70 @@
+{
+  "Controller CI 3": {
+    "prefix": "CI3_Controller",
+    "body": " <?php defined('BASEPATH') or exit('No direct script access allowed'); class NamaController extends CI_Controller { function __construct() { parent::__construct(); $$this->load->model('FolderModel/NamaModel'); $$this->load->model('auth/auth_model'); $$this->auth_model->cek_login(); $$this->load->library('PHPJasperXML'); $$this->load->library('form_validation');} $1} ?>"
+  },
+  "Model CI 3": {
+    "prefix": "CI3_Model",
+    "body": "<?php defined('BASEPATH') or exit('No direct script access allowed'); class NamaModel extends CI_Model { function __construct() { parent::__construct(); $$this->db = $$this->load->database('NamaDatabase', TRUE);} $1}?>"
+  },
+  "Load View CI 3": {
+    "prefix": "CI3_loadview",
+    "body": "$$this->load->view('NamaFolder/NamaView', $$data);"
+  },
+  "Setting Variabel of Tabel CI 3": {
+    "prefix": "CI3_showtabledata",
+    "body": "$$data['VariabelUntukTabel'] = $$this->NamaModel->NamaFungsiPadaModel()->result();"
+  },
+  "Page Title CI 3": {
+    "prefix": "CI3_title",
+    "body": "$$data['title_page'] = 'MasukkanJudulHalaman';"
+  },
+  "Make Function CI 3": {
+    "prefix": "CI3_function",
+    "body": " public function NamaFungsi(){$1}"
+  },
+  "Showing Data (In Model)": {
+    "prefix": "CI3_showdata",
+    "body": "public function NamaFungsiUntukTampilData(){ $$this->db->order_by('NamaFieldYangAkanDiurutkan','DESC'); return $$this->db->get('NamaTabel');}"
+  },
+  "Insert Data (In Model)": {
+    "prefix": "CI3_insertdata",
+    "body": " public function NamaFungsiUntukInputData($$data){$$this->db->insert('NamaTabel', $$data);}"
+  },
+  "Showing Data by a Field/Id (In Model)": {
+    "prefix": "CI3_showdataby",
+    "body": "public function NamaFungsiUntukTampilDataBerdasarFieldAtauID($$FieldAtauID) { $$this->db->select('*'); $$this->db->from('NamaTabel'); $$this->db->where('FieldAtauID', $$FieldAtauID); $$query = $$this->db->get(); return $$query->result(); }"
+  },
+  "Deleting Data (In Model)": {
+    "prefix": "CI3_deletedata",
+    "body": ""
+  },
+  "Updating Data (In Model)": {
+    "prefix": "CI3_updatedata",
+    "body": ""
+  },
+  "Posting Data": {
+    "prefix": "CI3_postdata",
+    "body": "public function NamaFungsiPengirimanData(){ $$NAMAFIELD = $$this->input->post('NAMAFIELD'); $$data = array( 'NAMAFIELD' => $$NAMAFIELD); $$this->NamaModel->NamaFunctionInputData($$data, 'NamaTabel'); redirect('NamaFolder/NamaController/NamaFungsiUntukLamanDitampilkannyaData');}"
+  },
+  "Make Selected By Field/ID In New Page": {
+    "prefix": "CI3_pageselectby",
+    "body": "public function NamaFungsiPilihLamanBerdasarIDAtauField($$IDAtauField){ $$data = array('VariabelUntukTabel' => $$this->NamaModel->NamaFungsiUntukMenampilkan($$IDAtauField)); $$data['title_page'] = 'Masukkan Judul Halaman';}"
+  },
+  "Setting Access Page By Login Role": {
+    "prefix": "CI3_userrole",
+    "body": "if ($$this->session->userdata('role') == '1' || $$this->session->userdata('role') == '2') {$1 //disini masukkan load view (halaman) yang akan diakses berdasarkan role } //role bisa diatur opsional angkanya tergantung usage"
+  },
+  "Directing To New Page By ID/FIELD": {
+    "prefix": "CI3_directpageby",
+    "body": "<a href='<?php echo site_url('/NamaFolder/NamaController/NamaFungsi/' . $VariabelUntukTabel_as->FIELDatauID); ?>'></a>"
+  },
+  "Edit Data By ID": {
+    "prefix": "CI3_editdata",
+    "body": " public function NamaFungsiUntukEdit(){$$YangMauDiEdit = $$this->input->post('YangMauDiedit');$$data = array('YangMauDiEdit'  => $$this->input->post('YangMauDiedit'),'YangMaudiedit2'  => $$this->input->post('YangMaudiedit2'),'YangMaudiedit3' => $$this->input->post('YangMaudiedit3')  );$$this->NamaModel->NamaFungsiUntukEdit($$data,$$YangMauDieditIniMisalKalauBerdasarkanID);redirect('NamaFolder/NamaController/NamaFungsi');}"
+  },
+  "Edit Data By ID (In Model)": {
+    "prefix": "CI3_editdatamodel",
+    "body": "public function NamaFungsiUntukEdit($$data, $$IDApa){$$this->db->where('IDApa',$$IDApa);$$this->db->update('NamaTabel', $$data);return TRUE;}"
+  }
+}
