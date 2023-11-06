@@ -1,3 +1,8 @@
+Tech is ready to use that consist:
+-CI 3 Framework
+-SB Admin 2 Template
+-Snippets
+
 ###################
 What is CodeIgniter
 ###################
